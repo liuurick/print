@@ -1,0 +1,18 @@
+<div>
+    <div class="post-info text-muted">
+        <span class="author info">By ${shareInfo.username}</span>
+									<span class="date-time info">On
+										<span class="date">${shareInfo.createTime?date}</span>
+										<span class="time">${shareInfo.createTime?time}</span>
+									</span>
+									<span class="categories info">Download
+										${shareInfo.downloadNum}
+									</span>
+    </div>
+
+    <div class="post-tags text-muted">
+        Tag:
+        <a class="tag" href="/tags/git/">#${shareInfo.tagName}</a>
+    </div>
+
+</div>

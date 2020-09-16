@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.SingleDoubleMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.SingleDouble">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="page_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="variable" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, page_type, shop_id, variable
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from single_double_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from single_double_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.SingleDouble">
+    insert into single_double_info (id, page_type, shop_id,
+      variable )
+    values (#{id,jdbcType=INTEGER}, #{pageType,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER},
+      #{variable ,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.SingleDouble">
+    insert into single_double_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pageType != null">
+        page_type,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="variable  != null">
+        variable ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pageType != null">
+        #{pageType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="variable  != null">
+        #{variable ,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.SingleDouble">
+    update single_double_info
+    <set>
+      <if test="pageType != null">
+        page_type = #{pageType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="variable  != null">
+        variable  = #{variable ,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updatePrice" parameterType="com.wrq.pojo.SingleDouble">
+    update single_double_info
+    set
+    variable = #{price ,jdbcType=VARCHAR}
+    where page_type = #{pageType,jdbcType=VARCHAR} and shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+
+
+
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.SingleDouble">
+    update single_double_info
+    set page_type = #{pageType,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      variable = #{variable ,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectSingleOrDoubleByShopId" parameterType="map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM single_double_info
+    WHERE shop_id = #{shopId} and page_type = #{pageType}
+  </select>
+</mapper>

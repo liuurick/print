@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.OrderMasterMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.OrderMaster">
+    <constructor>
+      <idArg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="buyer_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="buyer_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="buyer_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="buyer_email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="payment" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="payment_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="order_status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="payment_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="refuse_reason" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="get_key" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_no, shop_id, buyer_id, buyer_name, buyer_phone, buyer_email, payment, payment_type, 
+    order_status, payment_time, create_time, update_time, refuse_reason, get_key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_master
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_master
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.OrderMaster">
+    insert into order_master (order_no, shop_id, buyer_id,
+      buyer_name, buyer_phone, buyer_email, 
+      payment, payment_type, order_status, 
+      payment_time, create_time, update_time, 
+      refuse_reason, get_key)
+    values (#{orderNo,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, 
+      #{buyerName,jdbcType=VARCHAR}, #{buyerPhone,jdbcType=VARCHAR}, #{buyerEmail,jdbcType=VARCHAR}, 
+      #{payment,jdbcType=DECIMAL}, #{paymentType,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, 
+      #{paymentTime,jdbcType=TIMESTAMP}, now(), now(),
+      #{refuseReason,jdbcType=VARCHAR}, #{getKey,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.OrderMaster">
+    insert into order_master
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="buyerId != null">
+        buyer_id,
+      </if>
+      <if test="buyerName != null">
+        buyer_name,
+      </if>
+      <if test="buyerPhone != null">
+        buyer_phone,
+      </if>
+      <if test="buyerEmail != null">
+        buyer_email,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="paymentType != null">
+        payment_type,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="paymentTime != null">
+        payment_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="refuseReason != null">
+        refuse_reason,
+      </if>
+      <if test="getKey != null">
+        get_key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerName != null">
+        #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerPhone != null">
+        #{buyerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerEmail != null">
+        #{buyerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null">
+        #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTime != null">
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+      <if test="refuseReason != null">
+        #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="getKey != null">
+        #{getKey,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.OrderMaster">
+    update order_master
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null">
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerName != null">
+        buyer_name = #{buyerName,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerPhone != null">
+        buyer_phone = #{buyerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerEmail != null">
+        buyer_email = #{buyerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null">
+        payment_type = #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTime != null">
+        payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+      <if test="refuseReason != null">
+        refuse_reason = #{refuseReason,jdbcType=VARCHAR},
+      </if>
+      <if test="getKey != null">
+        get_key = #{getKey,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.OrderMaster">
+    update order_master
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      buyer_name = #{buyerName,jdbcType=VARCHAR},
+      buyer_phone = #{buyerPhone,jdbcType=VARCHAR},
+      buyer_email = #{buyerEmail,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=DECIMAL},
+      payment_type = #{paymentType,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now(),
+      refuse_reason = #{refuseReason,jdbcType=VARCHAR},
+      get_key = #{getKey,jdbcType=VARCHAR}
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByUserIdAndOrderNo" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from order_master
+    where order_no = #{orderNo}
+    and buyer_id = #{userId}
+  </select>
+
+  <select id="selectOrderListByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_master
+    where buyer_id = #{userId}  order by create_time desc
+  </select>
+
+  <select id="selectOrderListByShopId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_master
+    where shop_id = #{shopId} and order_status between 11 and 69 -- 10 为未付款，而 70 为订单关闭，这些都是不应该展示给店家的
+    order by create_time desc
+  </select>
+
+  <select id="checkByOrderNoAndShopId" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from order_master
+    where order_no = #{orderNo}
+    and shop_id = #{shopId}
+  </select>
+
+  <update id="updateOrderStatusAndGetKeyByPrimaryKey" parameterType="com.wrq.pojo.OrderMaster">
+    update order_master
+    set order_status = #{orderStatus,jdbcType=INTEGER}, get_key = #{getKey,jdbcType=VARCHAR},  update_time = now()
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateOrderStatusAndReasonByPrimaryKey" parameterType="com.wrq.pojo.OrderMaster">
+    update order_master
+    set order_status = #{orderStatus,jdbcType=INTEGER}, refuse_reason = #{reason,jdbcType=VARCHAR},  update_time = now()
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateOrderStatusByOrderNo" parameterType="com.wrq.pojo.OrderMaster">
+    update order_master
+    set order_status = #{orderStatus,jdbcType=INTEGER},  update_time = now()
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

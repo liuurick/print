@@ -1,0 +1,42 @@
+<div class="_3hVBef3W_0">
+    <div class="_3S9KmBtG_0">
+
+        <div>
+            <div class="_20Cq3Rn7_0" v-for="item in list" :key="item.createTime">
+                <div class="_2sej44xY_0">
+                    <div class="user-wrapper">
+                        <img class="user-header" :src="item.headImg | headImgFilter">
+                        <div class="user-name">{{item.username}}</div>
+                        <div class="user-time">时间：{{item.createTime}}</div>
+                    </div>
+                </div>
+                <div class="_3M3E-ESU_0">
+                    <div class="_3gQBs_6X_0">
+                        <div class="_3G50nw0p_0">
+                            <h2 @click="handleShareDetail(item.shareId)">{{item.title}}</h2>
+                            <p>views <em>|</em> {{item.viewNum}}</p>
+                        </div>
+                        <div class="_33lENDr7_0">
+                            标签：{{item.tagName}}
+                        </div>
+                    </div>
+                    <div class="_14n6BJoa_0">
+                        {{item.desc}}
+                    </div>
+
+                    <div class="_2zRFFX7P_0">
+                        <p class="_14cxbu2p_0"><span class="_1BSc9YvC_0">积分：{{item.integral}}</span></p>
+                        <div class="_1NLR_mQs_0"><button class="_272_Yrle_0" @click="handleShareDetail(item.shareId)">查看详情</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button data-v-637a7fc8 @click="handleMoreClick" :class="{'is-hidden': size==total,'next-page-btn':true,'ui-btn':true,'orange-btn':true}" >
+            加载更多
+        </button>
+        <div  :class="{'OjL5wNoM_0':true, 'is-hidden': size!=total}"><span>— 没有更多了 —</span></div>
+    </div>
+
+    <#include "portal/shared/side.html"/>
+
+</div>

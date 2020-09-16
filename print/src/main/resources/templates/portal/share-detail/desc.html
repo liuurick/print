@@ -1,0 +1,34 @@
+<div class="_1x0pDALM_0">
+    <input ref="shareId" value="${shareInfo.shareId}" type="hidden">
+    <div class="_2qkcjvzY_0 msbQCbDP_0">
+        <section class="_25e0Ykz3_0">
+            <div class="_1mMpzUVS_0">
+                <div class="user-wrapper">
+                    <img class="user-header" src="${shareInfo.fileTypeImg}">
+                </div>
+            </div>
+            <div class="_2znyOrGn_0">
+                <div class="_3owuxYXf_0">${shareInfo.title}</div>
+                <div class="share-desc">
+                    ${shareInfo.desc}
+                </div>
+                <div class="_2OH9bLz9_0">
+                    <div class="_3gaFFk8Z_0"><span class="page-num">页数：${shareInfo.pageNum}</span></div>
+                    <div class="_150Nj8JL_0">
+                        <div class="_3gaFFk8Z_0"><button class="_11vGugtE_0"  @click="handleDownloadClick(${shareInfo.shareId})"> 下载 </button></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="_1n_--zEK_0">
+            <h3>需要积分：<span class="shop_score">${shareInfo.integral} </span> 分</h3>
+            <h3>我的积分：<span class="shop_score">${shareInfo.myIntegral} </span> 分</h3>
+            <div>
+                <h3>上传用户：<span class="shop_score">${shareInfo.username}</span></h3>
+            </div>
+            <div>
+                <h3>文件类型：<span class="shop_score">${shareInfo.fileType}</span></h3>
+            </div>
+        </div>
+    </div>
+</div>

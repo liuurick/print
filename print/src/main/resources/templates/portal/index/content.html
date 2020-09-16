@@ -1,0 +1,94 @@
+<div id="content">
+<div data-v-637a7fc8 class="content">
+    <div data-v-637a7fc8 class="main-title"><span data-v-637a7fc8>店铺</span>
+        <div @click="handleOrderClick" data-v-637a7fc8 class="ui-btn white-btn"><i data-v-637a7fc8 class="iconfont"></i>
+            我的订单
+        </div>
+    </div>
+    <div data-v-637a7fc8 class="category-wrapper">
+        <dl data-v-637a7fc8><dt data-v-637a7fc8>排序方式：</dt>
+            <dd data-v-637a7fc8 @click="handleCreditClick" :class="{selected: creditSelected}"><a data-v-637a7fc8 data-seo>店铺评分</a></dd>
+            <dd data-v-637a7fc8 @click="handleDealClick" :class="{selected: dealSelected}"><a data-v-637a7fc8 data-seo >交易总量</a></dd>
+            <!--<dd data-v-637a7fc8 class><a data-v-637a7fc8 data-seo href="//time.geekbang.org/library?category=3">创建时间</a></dd>-->
+            <dd data-v-637a7fc8 @click="handleAllClick" :class="{selected: allSelected}"><a data-v-637a7fc8 data-seo >所有店铺</a></dd>
+            <dd data-v-637a7fc8 class="total_shop"> 共 {{total}} 家店面</dd>
+        </dl>
+    </div>
+    <ul data-v-637a7fc8 class="column-list"  v-for="(item, index) of list" :key="index">
+        <li data-v-637a7fc8><a data-v-637a7fc8 data-seo :href=" '/shop/detail/' + item.shopId"><img
+                data-v-637a7fc8 :src="item.imgAddress" class="cover"></a>
+            <div data-v-637a7fc8 class="mark" style="background: rgb(91, 166, 255);">Num {{index+1}}.</div>
+            <div data-v-637a7fc8 class="column">
+                <h6 data-v-637a7fc8 class="shop-title-score"><a class="shop-name" :href="'/shop/detail/' + item.shopId">{{item.shopName}}</a><span class="shop-score">{{item.credit}} 分</span></h6>
+                <p data-v-637a7fc8 class="author"><em data-v-637a7fc8>
+                    {{item.dealNum}} 人已打印成功
+                </em> <span data-v-637a7fc8> </span>
+                    {{item.shopDescription}}
+                </p>
+                <ul data-v-637a7fc8>
+
+                    <li data-v-637a7fc8>
+                        <a class="shop-list-price" :href="'/shop/detail/' + item.shopId">
+                        <div data-v-637a7fc8 class="column-row"><em data-v-637a7fc8 class="preview">
+                            [详情]
+                        </em> <i data-v-637a7fc8 class="iconfont"></i><span data-v-637a7fc8 class="column-title">普通黑白A4尺寸 {{item.normalSingle | onService}}
+												</span></div>
+                        </a>
+                    </li>
+                    <li data-v-637a7fc8>
+                        <a  class="shop-list-price" :href="'/shop/detail/' + item.shopId">
+                        <div data-v-637a7fc8 class="column-row"><em data-v-637a7fc8 class="preview">
+                            [详情]
+                        </em> <i data-v-637a7fc8 class="iconfont"></i> <span data-v-637a7fc8 class="column-title">普通彩印A4尺寸 {{item.colorfulSingle | onService}}
+												</span></div>
+                        </a>
+                    </li>
+                    <li data-v-637a7fc8>
+                        <a class="shop-list-price" :href="'/shop/detail/' + item.shopId">
+                        <div data-v-637a7fc8 class="column-row"><em data-v-637a7fc8 class="preview">
+                            [详情]
+                        </em> <i data-v-637a7fc8 class="iconfont"></i> <span data-v-637a7fc8 class="column-title">黑白双面A4尺寸
+												{{item.normalDouble | onService}} </span></div>
+                        </a>
+                    </li>
+                    <li data-v-637a7fc8>
+                        <a class="shop-list-price" :href="'/shop/detail/' + item.shopId">
+                        <div data-v-637a7fc8 class="column-row"><em data-v-637a7fc8 class="preview">
+                            [详情]
+                        </em> <i data-v-637a7fc8 class="iconfont"></i> <span data-v-637a7fc8 class="column-title">彩色双面A4尺寸 {{item.colorfulDouble | onService}}
+												</span></div>
+                        </a>
+                    </li>
+                    <li data-v-637a7fc8>
+                        <a  class="shop-list-price" :href="'/shop/detail/' + item.shopId">
+                        <div data-v-637a7fc8 class="column-row">
+                            <!----> <i data-v-637a7fc8 class="iconfont"></i> <span data-v-637a7fc8 class="column-title">其他规格详情...</span></div>
+                        </a>
+                    </li>
+                </ul>
+                <div data-v-637a7fc8 class="checkout">
+                    <div data-v-637a7fc8 class="price"><span data-v-637a7fc8 class="amount">
+
+										</span>
+                    </div>
+                    <div data-v-637a7fc8 class="column-btn-wrapper">
+                        <a class="open-shop-btn" :href="'/shop/detail/' + item.shopId">
+                        <div data-v-637a7fc8 class="ui-btn orange-btn"><i data-v-637a7fc8 class="iconfont"></i>
+                            {{ item.status | shopStatusFilter }}
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<button data-v-637a7fc8 @click="handleMoreClick" :class="{'is-hidden': size==total}" class="next-page-btn ui-btn orange-btn">
+    加载更多
+</button>
+
+</div>
+
+<!--引入js-->
+<script src="${basePath}/service/index/index.js"></script>

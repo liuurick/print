@@ -1,0 +1,31 @@
+<div class="aWoEm1VW_0">
+    <div class="_3SZaEKao_0"><img :src="headerPic"
+                                  class="_1162B7i7_0">
+        <div class="_20XltAts_0">{{username}}</div>
+    </div>
+    <div class="_1tbWAlsU_0"><textarea v-model="content" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" rows="16" class="_2KHEOPSr_0"></textarea></div>
+    <div class="_1veVZDxP_0">
+        <div class="_35yjm5PG_0"></div>
+        <div class="Yy13DVC5_0"></div>
+        <div class="_3_vpCYgD_0" @click="handleSubmitComment">提交留言</div>
+    </div>
+</div>
+<div class="_3-W_zrq4_0" :class="{'is-hidden': total<0}">
+    <h4>精选留言({{total}})</h4>
+    <ul>
+        <li class="_2sjJGcOH_0" v-for="(item, index) of list" :key="index">
+            <img :src="item.headerPic"
+                                     class="_3FLYR4bF_0">
+            <div class="_36ChpWj4_0">
+                <div class="_2zFoi7sd_0"><span>{{item.username}}</span>
+
+                </div>
+                <div class="_2_QraFYR_0">{{item.content}}</div>
+                <div class="_3klNVc4Z_0">
+                    <div class="_3Hkula0k_0">{{item.createTime | dataFormat}}</div>
+                </div>
+
+            </div>
+        </li>
+    </ul>
+</div>

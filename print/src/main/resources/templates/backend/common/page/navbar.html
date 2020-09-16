@@ -1,0 +1,75 @@
+<div id="navbar">
+<!--模态框-->
+
+<div class="modal" :class="{show: modelShow}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" @click="handleModelCloseClick" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">新订单提醒</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-9">
+                        您有新的订单：
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 col-sm-2">
+
+                            </div>
+                            <div class="col-xs-10 col-sm-8">
+                                点击下方「查看订单」前去查看订单详情！
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" @click="handleModelCloseClick" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" @click="handleModelOrderClick">查看订单</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="navbar navbar-default">
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="icon-leaf"></i>
+                    {{shopName}}
+                </small>
+            </a><!-- /.brand -->
+        </div><!-- /.navbar-header -->
+
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <label class="pull-right inline">
+                            <small class="muted">营业</small>
+                            <input id="gritter-light" :checked="business" @change="handleBusinessChange" type="checkbox" class="ace ace-switch ace-switch-5">
+                            <span class="lbl"></span>
+                        </label>
+                    </a>
+
+                </li>
+                <!--播放音乐-->
+                    <audio id="notice" ref="audio">
+                        <source src="${basePath}/backend/mp3/song.mp3" type="audio/mpeg" />
+                    </audio>
+
+            </ul><!-- /.ace-nav -->
+        </div><!-- /.navbar-header -->
+    </div><!-- /.container -->
+</div>
+
+</div>
+
+
+<script src="${basePath}/backend/js/service/common/index.js"></script>

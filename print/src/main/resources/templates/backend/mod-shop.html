@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>修改信息</title>
+	<#include "backend/common/meta.html"/>
+	<#include "backend/common/js.html"/>
+	<link rel="stylesheet" href="${basePath}/editor/lib/css/editor.min.css">
+	<link rel="stylesheet" href="${basePath}/editor/lib/plugins/mathtype/mathtype.css">
+	<link rel="stylesheet" href="${basePath}/backend/css/append.css"/>
+	<script src="${basePath}/editor/lib/js/editor.js"></script>
+	<script src="${basePath}/editor/lib/plugins/mathtype/index.js"></script>
+</head>
+
+	<body>
+
+	<#include "backend/common/page/navbar.html"/>
+
+
+	<div id="mod-shop">
+		<#include "backend/mod-shop/edit.html"/>
+	</div>
+
+	<script src="${basePath}/backend/js/service/mod-shop/mod-shop.js"></script>
+	</body>
+</html>

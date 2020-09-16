@@ -1,0 +1,149 @@
+<div class="main-container" id="main-container">
+
+    <div class="main-container-inner">
+
+        <#include "backend/common/page/sidebar.html"/>
+
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        修改信息
+                    </h1>
+                </div><!-- /.page-header -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 店铺名字: </label>
+
+                                <div class="col-sm-9">
+                                    <input type="text" id="form-field-1" class="col-xs-10 col-sm-5" v-model="name" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 店铺地址: </label>
+                                <div class="col-sm-9">
+                                    <input type="text"  id="form-field-2" v-model="address" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 联系方式: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-10 col-sm-5"  v-model="phone" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 联系邮箱: </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="col-xs-10 col-sm-5"  v-model="email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 店铺描述: </label>
+                                <div class="col-sm-9">
+                                    <textarea class="col-xs-10 col-sm-5" v-model="desc"  rows="5">{{desc}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 工作时间: </label>
+
+                                <div class="col-sm-9">
+                                    <input type="time" v-model="workTime" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 打烊时间: </label>
+                                <div class="col-sm-9">
+                                    <input type="time" v-model="closeTime"  class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 展示主图: </label>
+                                <div class="col-sm-9">
+                                    <form name="form1" @submit.prevent="handleUploadSubmitMainImgClick" method="post" enctype="multipart/form-data">
+                                        <div class="file-upload-wrapper">
+                                            <div class="file-upload-view">
+                                                <a class="update-file-input">
+                                                    <input @change="handleMainImgUpload($event)" ref="mainImgUploadInput" type="file" name="请上传文件">
+                                                    <p v-html="mainImgText"></p>
+                                                </a>
+                                                <div class="file-upload-name" v-html="mainImgName"></div>
+                                            </div>
+
+                                            <div class="file-upload-sibmit-wrapper">
+                                                <input :class="{'not-upload-file': true, 'is-hidden': mainImgUploadDisplay}" ref="mainImgUploadButtonText"
+                                                       value="上传文件">
+                                                <input :class="{'file-upload-submit': true, 'is-hidden': !mainImgUploadDisplay}" type="submit" value="上传文件">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                                <div class="col-sm-9">
+                                    <img :src="mainImg" style="width: 600px;height: 250px;" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 展示副图: </label>
+                                <div class="col-sm-9">
+                                    <form name="form1" @submit.prevent="handleUploadSubmitMiniImgClick" method="post" enctype="multipart/form-data">
+                                        <div class="file-upload-wrapper">
+                                            <div class="file-upload-view">
+                                                <a class="update-file-input">
+                                                    <input @change="handleMiniImgUpload($event)" ref="miniImgUploadInput" type="file" name="请上传文件">
+                                                    <p v-html="miniImgText"></p>
+                                                </a>
+                                                <div class="file-upload-name" v-html="miniImgName"></div>
+                                            </div>
+
+                                            <div class="file-upload-sibmit-wrapper">
+                                                <input :class="{'not-upload-file': true, 'is-hidden': miniImgUploadDisplay}" ref="miniImgUploadButtonText"
+                                                       value="上传文件">
+                                                <input :class="{'file-upload-submit': true, 'is-hidden': !miniImgUploadDisplay}" type="submit" value="上传文件">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                                <div class="col-sm-9">
+                                    <img :src="miniImg" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 店铺详情: </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"></label>
+                                <div id="editorItem" class="editor">
+                                </div>
+                            </div>
+
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button @click="handleSubmitClick" class="btn btn-info" type="button">
+                                        <i class="icon-ok bigger-110"></i>
+                                        提交
+                                    </button>
+
+                                    &nbsp; &nbsp; &nbsp;
+                                    <button @click="handleCloseClick" class="btn" type="reset">
+                                        <i class="icon-undo bigger-110"></i>
+                                        关闭
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div><!-- /.row -->

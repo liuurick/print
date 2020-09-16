@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.ShopMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.Shop">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="owner_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="shop_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_description" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="credit" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="work_time" javaType="java.lang.String" jdbcType="TIMESTAMP" />
+      <arg column="close_time" javaType="java.lang.String" jdbcType="TIMESTAMP" />
+      <arg column="is_receive_order" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="credit_people_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="deal_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sub_img" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="main_img" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="mini_img" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner_id, shop_name, shop_address, shop_description, content, credit, status, 
+    work_time, close_time, is_receive_order, create_time, update_time, credit_people_num, deal_num, sub_img, main_img, mini_img
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from shop
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.Shop">
+    insert into shop (id, owner_id, shop_name, 
+      shop_address, shop_description, content, 
+      credit, status, work_time, 
+      close_time, is_receive_order, create_time, 
+      update_time, credit_people_num,
+      deal_num, sub_img, main_img, 
+      mini_img)
+    values (#{id,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, 
+      #{shopAddress,jdbcType=VARCHAR}, #{shopDescription,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{credit,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{workTime,jdbcType=VARCHAR},
+      #{closeTime,jdbcType=VARCHAR}, #{isReceiveOrder,jdbcType=INTEGER}, now(),
+      now(), #{creditPeopleNum,jdbcType=INTEGER}, #{creditTotal,jdbcType=VARCHAR},
+      #{dealNum,jdbcType=INTEGER}, #{subImg,jdbcType=VARCHAR}, #{mainImg,jdbcType=VARCHAR}, 
+      #{miniImg,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.Shop">
+    insert into shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="shopAddress != null">
+        shop_address,
+      </if>
+      <if test="shopDescription != null">
+        shop_description,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="credit != null">
+        credit,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+      <if test="closeTime != null">
+        close_time,
+      </if>
+      <if test="isReceiveOrder != null">
+        is_receive_order,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="creditPeopleNum != null">
+        credit_people_num,
+      </if>
+      <if test="dealNum != null">
+        deal_num,
+      </if>
+      <if test="subImg != null">
+        sub_img,
+      </if>
+      <if test="mainImg != null">
+        main_img,
+      </if>
+      <if test="miniImg != null">
+        mini_img,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAddress != null">
+        #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDescription != null">
+        #{shopDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null">
+        #{credit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null">
+        #{closeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isReceiveOrder != null">
+        #{isReceiveOrder,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+      <if test="creditPeopleNum != null">
+        #{creditPeopleNum,jdbcType=INTEGER},
+      </if>
+      <if test="dealNum != null">
+        #{dealNum,jdbcType=INTEGER},
+      </if>
+      <if test="subImg != null">
+        #{subImg,jdbcType=VARCHAR},
+      </if>
+      <if test="mainImg != null">
+        #{mainImg,jdbcType=VARCHAR},
+      </if>
+      <if test="miniImg != null">
+        #{miniImg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.Shop">
+    update shop
+    <set>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="shopAddress != null">
+        shop_address = #{shopAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDescription != null">
+        shop_description = #{shopDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null">
+        credit = #{credit,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="closeTime != null">
+        close_time = #{closeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="isReceiveOrder != null">
+        is_receive_order = #{isReceiveOrder,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+      <if test="creditPeopleNum != null">
+        credit_people_num = #{creditPeopleNum,jdbcType=INTEGER},
+      </if>
+      <if test="dealNum != null">
+        deal_num = #{dealNum,jdbcType=INTEGER},
+      </if>
+      <if test="subImg != null">
+        sub_img = #{subImg,jdbcType=VARCHAR},
+      </if>
+      <if test="mainImg != null">
+        main_img = #{mainImg,jdbcType=VARCHAR},
+      </if>
+      <if test="miniImg != null">
+        mini_img = #{miniImg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.Shop">
+    update shop
+    set owner_id = #{ownerId,jdbcType=INTEGER},
+      shop_name = #{shopName,jdbcType=VARCHAR},
+      shop_address = #{shopAddress,jdbcType=VARCHAR},
+      shop_description = #{shopDescription,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      credit = #{credit,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      work_time = #{workTime,jdbcType=VARCHAR},
+      close_time = #{closeTime,jdbcType=VARCHAR},
+      is_receive_order = #{isReceiveOrder,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now(),
+      credit_people_num = #{creditPeopleNum,jdbcType=INTEGER},
+      deal_num = #{dealNum,jdbcType=INTEGER},
+      sub_img = #{subImg,jdbcType=VARCHAR},
+      main_img = #{mainImg,jdbcType=VARCHAR},
+      mini_img = #{miniImg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectShopListByTypeSort" resultMap="BaseResultMap" parameterType="java.lang.String">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from shop
+    where status = 0
+    order by ${type} desc
+  </select>
+
+
+  <select id="selectAllShopByCredit" resultMap="BaseResultMap" parameterType="int">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from shop
+    order by create_time asc
+  </select>
+
+  <select id="selectOtherShopSortByCredit" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from shop
+    where id != #{shopId} and status = 0
+    order by credit desc
+  </select>
+
+  <select id="selectShopByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from shop
+    where owner_id = #{userId}
+  </select>
+
+  <update id="changeStoreStatus" parameterType="com.wrq.pojo.Shop">
+    update shop
+    set
+    status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="addDealNumByPrimaryKey" parameterType="com.wrq.pojo.Shop">
+    update shop
+    set
+    deal_num = deal_num + 1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateCreditByPrimaryKey" parameterType="com.wrq.pojo.Shop">
+    update shop
+    set
+    credit = #{credit,jdbcType=INTEGER},
+    credit_people_num = credit_people_num + 1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

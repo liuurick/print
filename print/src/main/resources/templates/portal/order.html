@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>订单明细</title>
+    <#include "portal/common/meta.html"/>
+    <link href="${basePath}/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="${basePath}/css/pay.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="${basePath}/css/footer.css"/>
+    <#include "portal/common/js.html"/>
+</head>
+<body>
+<div id="app">
+
+    <#include "portal/common/page/header.html"/>
+
+    <div id="order">
+
+        <#include "portal/order/order.html"/>
+
+    </div>
+
+    <#include "portal/common/page/footer.html"/>
+
+</div>
+<script src="${basePath}/service/order/index.js"></script>
+</body>
+</html>

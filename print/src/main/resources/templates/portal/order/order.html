@@ -1,0 +1,87 @@
+<div data-v-715e15c5 class="order" style="min-height: 937px;">
+    <h1 data-v-715e15c5 class="back">《  <span style="color: #555;" @click="handleGoBackClick">返回列表</span></h1>
+    <input type="hidden" value="${orderInfo.orderNo}" ref="orderNoRef">
+    <div data-v-715e15c5 class="order-list-pc">
+        <table data-v-715e15c5>
+            <thead data-v-715e15c5>
+            <tr data-v-715e15c5>
+                <th data-v-715e15c5>文件名</th>
+                <th data-v-715e15c5>单双页</th>
+                <th data-v-715e15c5>类型</th>
+                <th data-v-715e15c5>尺寸</th>
+                <th data-v-715e15c5>数量</th>
+                <th data-v-715e15c5>价格</th>
+            </tr>
+            </thead>
+            <tbody data-v-715e15c5>
+            <#list orderInfo.orderVoList as order>
+                <tr data-v-715e15c5>
+                    <td data-v-715e15c5 class="order-img"><img data-v-715e15c5 src="${order.fileTypeImg}" alt="cover">
+                        <p data-v-715e15c5>${order.fileName}</p>
+                    </td>
+                    <td data-v-715e15c5>${order.singleOrDouble}</td>
+                    <td data-v-715e15c5>${order.colorOrBlack}</td>
+                    <td data-v-715e15c5>${order.pageSize}</td>
+                    <td data-v-715e15c5>${order.fileQuantity}</td>
+                    <td data-v-715e15c5>￥ ${order.orderPrice}</td>
+                </tr>
+            </#list>
+            </tbody>
+        </table>
+    </div>
+    <div data-v-715e15c5 class="info">
+        <div data-v-715e15c5 class="info-price"><span data-v-715e15c5 class="order-no-class">订单号：${orderInfo.orderNo}</span><span
+                data-v-715e15c5 class="info-price-count">价格:</span> <span data-v-715e15c5 class="orange ">￥ ${orderInfo.totalPrice}</span></div>
+    </div>
+    <div :class="{ 'display-important': !payMethods }" class="not-display pay-methods">
+        <h3 data-v-715e15c5 class="pay-method-h3">请选择支付方式</h3>
+        <div data-v-715e15c5 class="pay-methods">
+            <div data-v-715e15c5 class="paybox-bd-methods">
+                <div data-v-715e15c5 class="method-list">
+
+                    <div data-v-715e15c5 class="method-list-item"><span data-v-715e15c5><i data-v-715e15c5 class="icon-weixin-big iconfont"></i>
+                                        <span data-v-715e15c5 class="pay-method-text">微信支付</span></span>
+                        <div data-v-715e15c5 class="checkbox" value="weixin">暂不支持</div>
+                    </div>
+                    <div data-v-715e15c5 class="method-list-item"><span data-v-715e15c5><i data-v-715e15c5 class="icon-alipay-big iconfont"></i>
+                                        <span data-v-715e15c5 class="pay-method-text iconfont">支付宝支付</span></span>
+                        <div data-v-715e15c5 class="checkbox" value="weixin"><i class="iconfont checked"></i></div>
+                    </div>
+                    <div data-v-715e15c5   :class="{'paybox-qr': true, display: getQr}">
+                        <div data-v-715e15c5  ><img class="qr-img-class" :src="qrUrl"></div>
+                        <p data-v-715e15c5  >使用支付宝扫码支付</p>
+                    </div>
+                    <div  data-v-715e15c5 class="current-user">
+                        <span data-v-715e15c5>确认手机号：${orderInfo.phone} <a data-v-715e15c5>更换号码</a></span>
+                        <div  data-v-715e15c5 class="current-user-warn"> 注意：手机号请务必填写正确！</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <#if orderInfo.orderStatus == "未支付" >
+        <div data-v-715e15c5 class="bottom"><a @click="handlePayClick" data-v-715e15c5 class="button-primary">去支付</a></div>
+    </#if>
+    <#if orderInfo.orderStatus == "已付款" >
+        <div data-v-715e15c5 class="bottom"><a @click="handleRefundClick" data-v-715e15c5 class="button-primary">退款</a></div>
+    </#if>
+    <#if orderInfo.orderStatus == "待取货" >
+        <div data-v-715e15c5 class="bottom"><a @click="handleGetKeyClick" data-v-715e15c5 class="button-primary">取货码</a></div>
+    </#if>
+    <#if orderInfo.orderStatus == "订单完结" >
+        <div data-v-715e15c5 class="bottom"><a @click="handleCloseOrderClick" data-v-715e15c5 class="button-primary">关闭</a></div>
+    </#if>
+
+
+
+    <div data-v-a05d844a data-v-715e15c5 :class="{'notice-wrap': true, 'display': paySuccess}">
+        <div data-v-a05d844a class="notice-info"><i data-v-a05d844a class="iconfont"></i>
+            <h1 data-v-a05d844a>支付成功</h1>
+            <p data-v-a05d844a>是否去分享文件赚取积分？</p>
+            <div data-v-a05d844a class="btns"><button class="btn-go-share"  @click="handleGoShareClick" data-v-a05d844a>前去分享</button>
+                <button @click="handleGoIndex" class="btn-go-index" data-v-a05d844a>回到首页</button></div>
+        </div>
+    </div>
+
+</div>

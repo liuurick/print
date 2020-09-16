@@ -1,0 +1,24 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Signin Template for Bootstrap</title>
+		<link rel="stylesheet" type="text/css" href="${basePath}/backend/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="${basePath}/backend/css/signin.css" />
+		<#include "portal/common/js.html"/>
+	</head>
+
+	<body class="text-center">
+		<div class="form-signin" id="login">
+			<input type="hidden" value="${url}" ref="urlRef">
+			<img class="mb-4" src="${basePath}/backend/css/images/bootstrap-solid.svg" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal">请登陆</h1>
+			<label for="inputEmail" class="sr-only">用户名</label>
+			<input v-model="username" type="username" id="inputEmail" class="form-control" placeholder="用户名" required="" autofocus="">
+			<label for="inputPassword" class="sr-only">密码</label>
+			<input v-model="password" type="password" id="inputPassword" class="form-control" placeholder="密码" required="">
+			<button class="btn btn-lg btn-primary btn-block"  @click="handleLoginClick">登陆</button>
+		</div>
+		<script src="${basePath}/backend/js/service/login/index.js"></script>
+	</body>
+</html>

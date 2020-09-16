@@ -1,0 +1,30 @@
+<div data-v-a5d53ce8 :class="{'account-main': true,'is-hidden': fileItem}">
+    <div data-v-e4d24c94 class="right-section">
+        <h1 data-v-e4d24c94 class="title">我的文件</h1>
+        <ul data-v-e4d24c94 class="goods-list">
+            <li data-v-e4d24c94 v-for="item in  list" :key="item.fileId">
+                <div data-v-e4d24c94 class="goods-image"><img data-v-e4d24c94 :src="item.fileTypeImg"></div>
+                <div data-v-e4d24c94 class="goods-info">
+                    <p data-v-e4d24c94 class="file-name">{{item.fileName}}</p>
+                    <p data-v-e4d24c94>{{item.share | fileShareFilter }}{{ item.integral | integralFilter }}</p>
+                    <p data-v-e4d24c94>时间：{{item.createTime}}</p>
+                </div>
+                <div data-v-e4d24c94 class="update-info"></div>
+                <div data-v-e4d24c94 class="btn-wrapper">
+                    <a :href=" '/file/download?file=' +item.fileNewName ">
+                     <div data-v-e4d24c94   class="ui-btn white-btn">下载</div>
+                    </a>
+                    <div data-v-e4d24c94 @click="handleShareClick(item.fileId)" class="ui-btn white-btn">{{item.share | fileShareButtonFilter}}</div>
+                </div>
+            </li>
+        </ul>
+        <div data-v-360910dd data-v-101d3828 :class="{none: true, 'is-hidden': noFile}"><img data-v-360910dd src="${basePath}/img/no-order.png"
+                                                               alt="none">
+            <p data-v-360910dd>暂无文件</p>
+        </div>
+        <button data-v-637a7fc8 @click="handleMoreBtnClick" class="next-page-btn ui-btn orange-btn" :class="{'is-hidden': size==total}">
+            加载更多
+        </button>
+        <div data-v-e4d24c94 class="bottom-paging"></div>
+    </div>
+</div>

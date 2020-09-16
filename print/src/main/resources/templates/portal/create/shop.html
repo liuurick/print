@@ -1,0 +1,27 @@
+<div class="_1x0pDALM_0">
+    <div class="_2qkcjvzY_0 msbQCbDP_0">
+        <section class="_25e0Ykz3_0">
+            <div class="_1mMpzUVS_0"><img alt class="_1Rk0W5BH_0" src="${shopInfo.miniImage}"></div>
+            <div class="_2znyOrGn_0">
+                <div class="_3owuxYXf_0">${shopInfo.shopName}</div>
+                <input type="hidden" value="${shopInfo.shopId}" ref="shopIdRef">
+                <div class="_1tO4kEoN_0">位置：</div>
+                <div class="_5OMiXi1z_0">
+                    ${shopInfo.shopAddress}
+                </div>
+                <div class="_3owuxYXf_0">客服电话：${shopInfo.ownerPhone}</div>
+                <div class="_3owuxYXf_0">联系邮箱：${shopInfo.ownerEmail}</div>
+                <div class="_3owuxYXf_0">取货时间：${shopInfo.workTime} - ${shopInfo.closeTime}</div>
+            </div>
+        </section>
+        <div class="_1n_--zEK_0">
+            <h3>此店评分：<span class="shop_score">${shopInfo.credit} </span>分</h3>
+            <div class="xpkXzua__0">
+                <div class="H99t5Me3_0"><a class="FtLGVXYZ_0">
+                    历史打印
+                </a> <a class="FtLGVXYZ_0 JjnwqCg1_0" @click="handleComplaintClick"> 投诉此店面
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

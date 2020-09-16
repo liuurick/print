@@ -1,0 +1,52 @@
+<div data-v-637a7fc8 class="fixed-header" id="header">
+    <div data-v-702109a0 data-v-637a7fc8 class="common-header white">
+        <div data-v-702109a0 class="common-header-wrapper">
+            <a data-v-702109a0 href="/index" class="common-logo"></a>
+            <div data-v-702109a0 class="info">
+                <div data-v-702109a0 class="menu">
+                    <a data-v-702109a0  @click="handleIndexCenterClick" class="menu-item">店铺选择</a>
+                    <a data-v-702109a0
+                       class="menu-item" @click="handleShareClick">资料分享</a>
+                    <!--<a data-v-702109a0  href class="menu-item">我的文件</a>-->
+                    <a data-v-702109a0   @click="handleUserCenterClick"  class="menu-item">个人中心</a>
+                    <a data-v-702109a0   @click="handleOrderClick"  class="menu-item">交易记录</a>
+                    <a data-v-702109a0  @click="handleHelpClick" class="menu-item">使用帮助</a>
+                    </div>
+
+                <div data-v-702109a0 class="userinfo">
+                            <span data-v-702109a0 class="control" :style="controlStyle">
+                                <a data-v-702109a0 href="/login" class="pc"> 登录 </a>
+                                <a data-v-702109a0 href class="pc"> 注册 </a>
+                            </span>
+
+                    <div data-v-702109a0 class="profile" :style="profileStyle">
+                        <a data-v-702109a0 @click="handleUserClick">
+                            <i data-v-702109a0 class="iconfont icon-profile"></i>
+                        </a>
+                        <div data-v-702109a0 class="profile-dropdown" :class="{show: isShow}">
+                            <i data-v-702109a0 class="arrow"></i>
+                            <a data-v-702109a0 href class="navbar-item user-info">
+                                <span data-v-702109a0 class="username">{{username}}</span>
+                                <span data-v-702109a0 class="cellphone">{{phone}}</span>
+                            </a>
+                            <a data-v-702109a0 class="navbar-item" @click="handleUserCenterClick">
+                                <i data-v-702109a0 class="iconfont"></i>
+                                基本资料
+                            </a>
+                            <a data-v-702109a0 class="navbar-item" @click="handleOrderClick">
+                                <i data-v-702109a0 class="iconfont"></i>
+                                我的订单
+                            </a>
+                            <a data-v-702109a0 @click="handleLoginOut" class="navbar-item exit"><i data-v-702109a0 class="iconfont"></i>
+                                退出登录
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--引入js-->
+<script src="${basePath}/service/common/header.js"></script>

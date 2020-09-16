@@ -1,0 +1,45 @@
+<div data-v-72e5c9fe data-v-a5d53ce8 :class="{'account-main': true,'is-hidden': userItem}">
+
+    <div data-v-a1f2b3b6 data-v-72e5c9fe class="right-section">
+        <h1 data-v-a1f2b3b6 class="title">基本信息</h1>
+        <div data-v-a1f2b3b6 class="item">
+            <div data-v-a1f2b3b6 class="item-detail">
+                <span data-v-a1f2b3b6 class="type">昵称:</span>
+										<span data-v-a1f2b3b6 :class="{'is-hidden': modUsername}">
+											 <input data-v-a1f2b3b6 type="text" v-model="newUsername" placeholder="昵称" maxlength="30" class="input">
+											  <button data-v-a1f2b3b6 class="btn-control save" @click="handleSaveUsernameClick">保存</button>
+											  <button data-v-a1f2b3b6 class="btn-control cancel" @click="handleCancelUsernameClick">取消</button>
+										</span>
+                <span data-v-a1f2b3b6 title="" class="value" :class="{'is-hidden': !modUsername}">{{username}}</span></div>
+            <div data-v-a1f2b3b6 class="action"><span data-v-a1f2b3b6 :class="{'is-hidden': !modUsername}" @click="handleModUsernameClick">修改</span></div>
+        </div>
+        <div data-v-a1f2b3b6 class="item">
+            <div data-v-a1f2b3b6 class="item-detail">
+                <span data-v-a1f2b3b6 class="type">邮箱:</span>
+										<span data-v-a1f2b3b6 :class="{'is-hidden': modEmail}">
+											 <input data-v-a1f2b3b6 type="text" v-model="newEmail" placeholder="邮箱" maxlength="30" class="input">
+											  <button data-v-a1f2b3b6 class="btn-control save" @click="handleSaveEmailClick">保存</button>
+											  <button data-v-a1f2b3b6 class="btn-control cancel" @click="handleCancelEmailClick">取消</button>
+										</span>
+                <span data-v-a1f2b3b6 title="" class="value" :class="{'is-hidden': !modEmail}">{{email}}</span></div>
+            <div data-v-a1f2b3b6 class="action" ><span data-v-a1f2b3b6 :class="{'is-hidden': !modEmail}" @click="handleModEmailClick">修改</span></div>
+        </div>
+        <div data-v-a1f2b3b6 class="item">
+            <div data-v-a1f2b3b6 class="item-detail">
+                <span data-v-a1f2b3b6 class="type">手机:</span>
+										<span data-v-a1f2b3b6 :class="{'is-hidden': modPhone}">
+											 <input data-v-a1f2b3b6 type="text" v-model="newPhone"  placeholder="手机" maxlength="30" class="input">
+											  <button data-v-a1f2b3b6 class="btn-control save" @click="handleSavePhoneClick">保存</button>
+											  <button data-v-a1f2b3b6 class="btn-control cancel" @click="handleCancelPhoneClick">取消</button>
+										</span>
+                <span data-v-a1f2b3b6 title="" class="value" :class="{'is-hidden': !modPhone}" >{{phone}}</span></div>
+            <div data-v-a1f2b3b6 class="action" ><span data-v-a1f2b3b6 :class="{'is-hidden': !modPhone}" @click="handleModPhoneClick">修改</span></div>
+        </div>
+        <div data-v-a1f2b3b6 class="item">
+            <div data-v-a1f2b3b6 class="item-detail">
+                <span data-v-a1f2b3b6 class="type">积分:</span>
+                <span data-v-a1f2b3b6 title="王久一" class="value" >{{integral}}</span></div>
+        </div>
+    </div>
+
+</div>

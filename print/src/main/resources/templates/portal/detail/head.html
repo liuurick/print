@@ -1,0 +1,33 @@
+<div class="_1x0pDALM_0">
+
+    <div class="_2qkcjvzY_0 msbQCbDP_0">
+        <section class="_25e0Ykz3_0">
+            <div class="_1mMpzUVS_0"><img alt="" class="_1Rk0W5BH_0" src="${shopInfo.miniImage}"></div>
+            <div class="_2znyOrGn_0">
+                <div class="_3owuxYXf_0">${shopInfo.shopName}</div>
+                <input type="hidden" value="${shopInfo.shopId}" ref="shopIdRef">
+                <input type="hidden" value="${shopInfo.status}" ref="shopStatusRef">
+                <div class="oZ_Dn0HY_0">${shopInfo.shopDescription}</div>
+                <div class="_1tO4kEoN_0">位置：</div>
+                <div class="_5OMiXi1z_0">
+                    ${shopInfo.shopAddress}
+                </div>
+                <div class="_2OH9bLz9_0">
+                    <div class="_3gaFFk8Z_0"><a class="print-btn" @click="handlePrintClick(${shopInfo.shopId})"><button class="_11vGugtE_0"> {{ shopStatus | shopStatusFilter }} </button></a></div>
+                    <div class="_150Nj8JL_0">
+                        ${shopInfo.dealNum} 人已打印
+                        <span> | 取货时间：</span> <span> 每日 ${shopInfo.workTime}-${shopInfo.closeTime}</span></div>
+                </div>
+            </div>
+        </section>
+        <div class="_1n_--zEK_0">
+            <h3>此店评分：<span class="shop_score">${shopInfo.credit} </span>分</h3>
+            <div class="xpkXzua__0">
+                <div class="H99t5Me3_0"><a @click="handleOrderClick" class="FtLGVXYZ_0">
+                    历史交易
+                </a> <a class="FtLGVXYZ_0 JjnwqCg1_0" @click="handleComplaintClick"> 投诉此店
+                </a> </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.ScoreMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.Score">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="owner_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="integral" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="share_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="file_new_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="look_over" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, owner_id, integral, share_id,   file_new_name, create_time, update_time, look_over
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from score_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from score_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.Score">
+    insert into score_history (id, user_id, share_id, owner_id, integral, create_time, update_time,
+      look_over, file_new_name)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{shareId,jdbcType=INTEGER},  #{ownerId,jdbcType=INTEGER},  #{integral,jdbcType=INTEGER}, now(), now(),
+      #{lookOver,jdbcType=INTEGER},#{fileNewName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.Score">
+    insert into score_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="shareId != null">
+        share_id,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="lookOver != null">
+        look_over,
+      </if>
+      <if test="fileNewName != null">
+        file_new_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shareId != null">
+        #{shareId,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+      <if test="lookOver != null">
+        #{lookOver,jdbcType=INTEGER},
+      </if>
+      <if test="fileNewName != null">
+        #{fileNewName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.Score">
+    update score_history
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="shareId != null">
+        share_id = #{shareId,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+      <if test="lookOver != null">
+        look_over = #{lookOver,jdbcType=INTEGER},
+      </if>
+      <if test="fileNewName != null">
+        file_new_name = #{fileNewName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.Score">
+    update score_history
+    set user_id = #{userId,jdbcType=INTEGER},
+      share_id = #{shareId,jdbcType=INTEGER},
+      owner_id = #{ownerId,jdbcType=INTEGER},
+      integral = #{integral,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now(),
+      look_over = #{lookOver,jdbcType=INTEGER},
+      file_new_name = #{fileNewName,jdbcType=VARCHAR},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectByUserIdAndShareId" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from score_history
+    where user_id = #{userId,jdbcType=INTEGER} and share_id = #{shareId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectScoreListByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from score_history
+    where user_id = #{userId}  order by create_time desc
+  </select>
+
+</mapper>

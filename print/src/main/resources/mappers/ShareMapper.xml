@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.ShareMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.Share">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="file_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="is_delete" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="tag" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="view_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="download_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="is_hot" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="is_top" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, description, user_id, file_id, is_delete, tag, view_num, download_num, 
+    is_hot, is_top, content, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from share
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from share
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.Share">
+    insert into share (id, title, description, 
+      user_id, file_id, is_delete, 
+      tag, view_num, download_num, 
+      is_hot, is_top, content, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{fileId,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, 
+      #{tag,jdbcType=VARCHAR}, #{viewNum,jdbcType=VARCHAR}, #{downloadNum,jdbcType=INTEGER}, 
+      #{isHot,jdbcType=INTEGER}, #{isTop,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      now(), now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.Share">
+    insert into share
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="viewNum != null">
+        view_num,
+      </if>
+      <if test="downloadNum != null">
+        download_num,
+      </if>
+      <if test="isHot != null">
+        is_hot,
+      </if>
+      <if test="isTop != null">
+        is_top,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="viewNum != null">
+        #{viewNum,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadNum != null">
+        #{downloadNum,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null">
+        #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="isTop != null">
+        #{isTop,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.Share">
+    update share
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="viewNum != null">
+        view_num = #{viewNum,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadNum != null">
+        download_num = #{downloadNum,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="isTop != null">
+        is_top = #{isTop,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.Share">
+    update share
+    set title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      file_id = #{fileId,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      tag = #{tag,jdbcType=VARCHAR},
+      view_num = #{viewNum,jdbcType=VARCHAR},
+      download_num = #{downloadNum,jdbcType=INTEGER},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      is_top = #{isTop,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectShareList" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from share
+    where is_delete = 0
+    order by create_time desc
+  </select>
+
+  <select id="selectByPrimaryKeyAndNotDelete" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from share
+    where id = #{id,jdbcType=INTEGER} and is_delete = 0
+  </select>
+
+  <update id="addViewNumByShareId" parameterType="com.wrq.pojo.Share">
+    update share
+    set
+    view_num = view_num + 1,
+    update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectShareListTypeSort" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from share
+    where is_delete = 0 and tag = #{type}
+    order by create_time desc
+  </select>
+
+</mapper>

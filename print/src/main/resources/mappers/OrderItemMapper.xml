@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.OrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.OrderItem">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="order_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="file_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="file_quantity" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="current_price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="size_info_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_des" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="color_info_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="page_info_type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, user_id, file_id, file_quantity, current_price, size_info_type, user_des, 
+    create_time, update_time, color_info_type, page_info_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from order_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.OrderItem">
+    insert into order_item (id, order_no, user_id, 
+      file_id, file_quantity, current_price, 
+      size_info_type, user_des, create_time, 
+      update_time, color_info_type, page_info_type)
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER},
+      #{fileId,jdbcType=INTEGER}, #{fileQuantity,jdbcType=INTEGER}, #{currentPrice,jdbcType=DECIMAL}, 
+      #{sizeInfoType,jdbcType=INTEGER}, #{userDes,jdbcType=VARCHAR}, now(),
+      now(), #{colorInfoType,jdbcType=INTEGER}, #{pageInfoType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.OrderItem">
+    insert into order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fileId != null">
+        file_id,
+      </if>
+      <if test="fileQuantity != null">
+        file_quantity,
+      </if>
+      <if test="currentPrice != null">
+        current_price,
+      </if>
+      <if test="sizeInfoType != null">
+        size_info_type,
+      </if>
+      <if test="userDes != null">
+        user_des,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="colorInfoType != null">
+        color_info_type,
+      </if>
+      <if test="pageInfoType != null">
+        page_info_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="fileQuantity != null">
+        #{fileQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="currentPrice != null">
+        #{currentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sizeInfoType != null">
+        #{sizeInfoType,jdbcType=INTEGER},
+      </if>
+      <if test="userDes != null">
+        #{userDes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+      <if test="colorInfoType != null">
+        #{colorInfoType,jdbcType=INTEGER},
+      </if>
+      <if test="pageInfoType != null">
+        #{pageInfoType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.OrderItem">
+    update order_item
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fileId != null">
+        file_id = #{fileId,jdbcType=INTEGER},
+      </if>
+      <if test="fileQuantity != null">
+        file_quantity = #{fileQuantity,jdbcType=INTEGER},
+      </if>
+      <if test="currentPrice != null">
+        current_price = #{currentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="sizeInfoType != null">
+        size_info_type = #{sizeInfoType,jdbcType=INTEGER},
+      </if>
+      <if test="userDes != null">
+        user_des = #{userDes,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+      <if test="colorInfoType != null">
+        color_info_type = #{colorInfoType,jdbcType=INTEGER},
+      </if>
+      <if test="pageInfoType != null">
+        page_info_type = #{pageInfoType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.OrderItem">
+    update order_item
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      file_id = #{fileId,jdbcType=INTEGER},
+      file_quantity = #{fileQuantity,jdbcType=INTEGER},
+      current_price = #{currentPrice,jdbcType=DECIMAL},
+      size_info_type = #{sizeInfoType,jdbcType=INTEGER},
+      user_des = #{userDes,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now(),
+      color_info_type = #{colorInfoType,jdbcType=INTEGER},
+      page_info_type = #{pageInfoType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectOrderItemByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_item
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getOrderItemByOrderNoUserId" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from order_item
+    where order_no = #{orderNo}
+    and user_id = #{userId}
+  </select>
+
+  <select id="selectByFileId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from order_item
+    where file_id = #{id,jdbcType=INTEGER}
+  </select>
+
+</mapper>

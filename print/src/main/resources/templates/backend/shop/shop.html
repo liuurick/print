@@ -1,0 +1,105 @@
+
+<div class="main-container" id="main-container">
+    <div class="main-container-inner">
+
+        <#include "backend/common/page/sidebar.html"/>
+
+        <div class="main-content">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        店铺信息
+                    </h1>
+                </div><!-- /.page-header -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 店铺名字: </label>
+
+                                <div class="col-sm-9">
+                                    <input  readonly="readonly" type="text" class="col-xs-10 col-sm-5" :value="name" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 店铺地址: </label>
+                                <div class="col-sm-9">
+                                    <input readonly="" type="text" class="col-xs-10 col-sm-5"  :value="address" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 联系方式: </label>
+                                <div class="col-sm-9">
+                                    <input readonly="" type="text" class="col-xs-10 col-sm-5"  :value="phone" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 联系邮箱: </label>
+                                <div class="col-sm-9">
+                                    <input readonly="" type="text" class="col-xs-10 col-sm-5"  :value="email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="form-input-readonly"> 店铺描述: </label>
+                                <div class="col-sm-9">
+                                    <textarea  readonly="readonly" class="col-xs-10 col-sm-5" rows="5">{{desc}}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 工作时间: </label>
+
+                                <div class="col-sm-9">
+                                    <input readonly="" type="text" class="col-xs-10 col-sm-5"  :value="workTime" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 打烊时间: </label>
+
+                                <div class="col-sm-9">
+                                    <input readonly="" type="text" class="col-xs-10 col-sm-5" id="form-input-readonly" :value="closeTime" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 展示主图: </label>
+
+                                <div class="col-sm-9">
+                                    <img :src="mainImg" style="width: 600px;height: 250px;" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 展示副图: </label>
+
+                                <div class="col-sm-9">
+                                    <img :src="miniImg" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" >店铺介绍:</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" ></label>
+                                <div class="col-sm-9">
+                                    <div v-html="content"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button class="btn btn-info" type="button" @click="handleModifyClick">
+                                        修改信息
+                                    </button>
+                                    &nbsp; &nbsp; &nbsp;
+                                    <button class="btn" type="reset">
+                                        价格设置
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div data-v-a5d53ce8 :class="{'account-main': true,'is-hidden': dealItem}">
+    <div data-v-e4d24c94 class="right-section">
+        <h1 data-v-e4d24c94 class="title">交易记录</h1>
+        <div data-v-e4d24c94 class="tag-wrapper">
+            <ul data-v-e4d24c94>
+                <li data-v-e4d24c94 :class="{selected: orderDeal}" @click="handleOrderSelect">
+                    订单记录
+                </li>
+                <li data-v-e4d24c94 :class="{selected: !orderDeal}" @click="handleIntegralSelect">
+                    积分记录
+                </li>
+            </ul>
+        </div>
+
+        <ul data-v-e4d24c94 :class="{'goods-list': true, 'is-hidden': !orderDeal}">
+            <li data-v-e4d24c94 v-for="item in list" :key="item.orderNo">
+                <div data-v-e4d24c94 class="goods-image"><img data-v-e4d24c94 class="shop-img" :src="item.shopImg"></div>
+                <div data-v-e4d24c94 class="goods-info">
+                    <p data-v-e4d24c94>价格：￥ {{item.payment}}</p>
+                    <p data-v-e4d24c94>单号：{{item.orderNo}}</p>
+                    <p data-v-e4d24c94>时间：{{item.updateTime}}</p>
+                </div>
+                <div data-v-e4d24c94 class="order-info">
+                    <p data-v-e4d24c94>订单状态：<span class="order-status-tips">{{item.orderStatus}}</span> </p>
+                    <p data-v-e4d24c94>{{item.getKey | getKeyFilter}}</p>
+                    <p data-v-e4d24c94>{{item.refuseReason | refuseReasonFilter}}</p>
+                </div>
+                <div data-v-e4d24c94 class="btn-wrapper">
+                    <div data-v-e4d24c94 class="ui-btn white-btn" @click="handleOrderDetailClick(item.orderNo)">详 情</div>
+
+                    <div data-v-e4d24c94 class="ui-btn white-btn" v-if=" item.orderStatus === '未支付' " @click="handleOrderDetailClick(item.orderNo)">去支付</div>
+                    <div data-v-e4d24c94 class="ui-btn white-btn" v-else-if=" item.orderStatus === '已付款' " @click="handleRefundClick(item.orderNo)">退款</div>
+                    <div data-v-e4d24c94 class="ui-btn white-btn" v-else-if=" item.orderStatus === '订单完结' " @click="handleOrderCloseClick(item.orderNo)">关闭</div>
+                    <div data-v-e4d24c94 class="ui-btn white-btn" v-else-if=" item.orderStatus === '待取货' " @click="handleOrderOverClick(item.orderNo)">已取货</div>
+                    <div data-v-e4d24c94 class="ui-btn white-btn is-hidden" v-else></div>
+                </div>
+            </li>
+        </ul>
+
+        <ul data-v-e4d24c94 :class="{'goods-list': true, 'is-hidden': orderDeal}">
+            <li data-v-e4d24c94 v-for="item in list" :key="item.shareId">
+                <div data-v-e4d24c94 class="goods-image"><img data-v-e4d24c94 class="file-img" :src="item.fileTypeImg"></div>
+                <div data-v-e4d24c94 class="goods-info">
+                    <p data-v-e4d24c94>{{item.title}}</p>
+                    <p data-v-e4d24c94>积分：{{item.integral}}</p>
+                    <p data-v-e4d24c94>时间：{{item.createTime}}</p>
+                </div>
+                <div data-v-e4d24c94 class="update-info">提供者：<span data-v-e4d24c94>{{item.ownerName}}</span> </div>
+                <div data-v-e4d24c94 class="btn-wrapper">
+                    <div data-v-e4d24c94 class="ui-btn white-btn" @click="handleShareDetailClick(item.shareId)">详情</div>
+                    <div data-v-e4d24c94 class="ui-btn white-btn" @click="handleDownloadScoreFileClick(item.id)">下载</div>
+                </div>
+            </li>
+        </ul>
+
+
+        <div data-v-e4d24c94 :class="{'empty-list': true, 'is-hidden': noOrder}">暂无订单</div>
+
+        <div data-v-360910dd data-v-101d3828 :class="{none: true, 'is-hidden': noIntegral }"><img data-v-360910dd src="${basePath}/img/no-order.png"
+                                                               alt="none">
+            <p data-v-360910dd>暂无交易</p>
+        </div>
+        <button data-v-637a7fc8  @click="handleMoreBtnClick"  class="next-page-btn ui-btn orange-btn" :class="{'is-hidden': size==total}">
+            加载更多
+        </button>
+        <div data-v-e4d24c94 class="bottom-paging"></div>
+    </div>
+</div>
+
+<div data-v-a05d844a data-v-715e15c5 :class="{'notice-wrap': true, 'is-hidden': overOrderSuccess}">
+    <div data-v-a05d844a class="notice-info"><i data-v-1ce6e4a8 class="iconfont-credit"></i>
+        <h1 data-v-a05d844a>交易成功</h1>
+        <p data-v-a05d844a>请为此店铺的服务打个分吧~</p>
+        <input id="input-21d"  value="2" style="display: none"  ref="starRef" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 data-size="sm"
+               title="">
+        <div data-v-a05d844a class="btns">
+            <button  class="btn-go-share" data-v-a05d844a @click="handleCreditClick">确认</button>
+            <button class="btn-go-index" data-v-a05d844a  @click="handleCloseCreditClick">退出</button></div>
+    </div>
+</div>

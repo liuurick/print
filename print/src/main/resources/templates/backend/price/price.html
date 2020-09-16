@@ -1,0 +1,325 @@
+<div class="main-container" id="main-container">
+    <div class="main-container-inner">
+
+        <#include "backend/common/page/sidebar.html"/>
+
+        <div class="main-content">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        价格信息(单位元)
+                    </h1>
+                </div><!-- /.page-header -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 单页价格: </label>
+
+                                <div class="col-sm-9">
+                                    <input  readonly="readonly"type="text"   placeholder="单页价格" :value="singlePage" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 黑白价格: </label>
+
+                                <div class="col-sm-9">
+                                    <input  readonly="readonly"type="text"  placeholder="黑白价格" :value="black" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"> 双页服务: </label>
+
+                                <div class="col-sm-9">
+                                    <label class="inline pull-left">
+                                        <input  disabled :checked="hasDoublePage" @change="handleDoublePageChange" type="checkbox" class="ace ace-switch ace-switch-5">
+                                        <span class="lbl"></span>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="form-group" :class="{'is-hidden':!hasDoublePage}">
+                                <label class="col-sm-3 control-label no-padding-right" > 双页价格:</label>
+
+                                <div class="col-sm-9">
+                                    <input  disabled type="text"  placeholder="双页价格" :value="doublePage" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 彩印服务: </label>
+
+                                <div class="col-sm-9">
+                                    <label class="inline pull-left">
+                                        <input  disabled :checked="hasColor" @change="handleColorChange" type="checkbox" class="ace ace-switch ace-switch-5">
+                                        <span class="lbl"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group" :class="{'is-hidden':!hasColor}">
+                                <label class="col-sm-3 control-label no-padding-right" > 彩印价格:</label>
+
+                                <div class="col-sm-9">
+                                    <input  readonly="readonly"type="text"  placeholder="彩印价格" :value="color" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 文件尺寸: </label>
+
+                                <div class="col-sm-9">
+
+                                    <div class="control-group col-xs-5">
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA0Click" name="form-field-checkbox" :checked="hasA0" type="checkbox" class="ace">
+                                                <span class="lbl">A0</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled  @click="handleA1Click" name="form-field-checkbox" :checked="hasA1" type="checkbox" class="ace">
+                                                <span class="lbl">A1</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA2Click" name="form-field-checkbox" :checked="hasA2" type="checkbox" class="ace">
+                                                <span class="lbl">A2</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA3Click" name="form-field-checkbox"  :checked="hasA3" type="checkbox" class="ace">
+                                                <span class="lbl">A3</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled  @click="handleA4Click" name="form-field-checkbox" :checked="hasA4" type="checkbox" class="ace">
+                                                <span class="lbl">A4</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA5Click" name="form-field-checkbox" :checked="hasA5" type="checkbox" class="ace">
+                                                <span class="lbl">A5</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA6Click" name="form-field-checkbox" :checked="hasA6" type="checkbox" class="ace">
+                                                <span class="lbl">A6</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA7Click" name="form-field-checkbox" :checked="hasA7" type="checkbox" class="ace">
+                                                <span class="lbl">A7</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA8Click" name="form-field-checkbox" :checked="hasA8" type="checkbox" class="ace">
+                                                <span class="lbl">A8</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA9Click" name="form-field-checkbox" :checked="hasA9" type="checkbox" class="ace">
+                                                <span class="lbl">A9</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handleA10Click" name="form-field-checkbox" :checked="hasA10" type="checkbox" class="ace">
+                                                <span class="lbl">A10</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled  @click="handle4A0Click" name="form-field-checkbox" :checked="has4A0" type="checkbox" class="ace">
+                                                <span class="lbl">4A0</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="checkbox col-xs-1">
+                                            <label>
+                                                <input  disabled @click="handle0A0Click" name="form-field-checkbox" :checked="has0A0" type="checkbox" class="ace">
+                                                <span class="lbl">0A0</span>
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" > 尺寸价格: </label>
+                                    <!--<label class="col-xs-3 no-padding-left" >&nbsp;&nbsp; &nbsp;输入的价格以黑白单页为基础</label>-->
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA0}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A0:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA0" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA1}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A1:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA1" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA2}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A2:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA2" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA3}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A3:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA3" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA4}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A4:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA4" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA5}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A5:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA5" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA6}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A6:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA6" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA7}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A7:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA7" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA8}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A8:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text"  :value="priceA8" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA9}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A9:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text" :value="priceA9" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!hasA10}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">A10:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text" :value="priceA10" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!has4A0}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">4A0:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text" :value="price4A0" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group" :class="{'is-hidden':!has0A0}">
+                                    <label class="col-sm-3 control-label no-padding-right" ></label>
+                                    <div class="col-sm-9">
+                                        <label class="pull-left">0A0:&nbsp;&nbsp;&nbsp;</label>
+                                        <input  readonly="readonly"type="text" :value="price0A0" class="col-xs-1 col-sm-1" />
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" > 优惠活动: </label>
+
+                                <div class="col-sm-9">
+                                    <label class="inline pull-left">
+                                        <input  disabled id="id-pills-stacked" :checked="hasBonus" @change="handleBonusChange" type="checkbox" class="ace ace-switch ace-switch-5">
+                                        <span class="lbl"></span>
+                                    </label>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group" :class="{'is-hidden':!hasBonus}">
+                                <label class="col-sm-3 control-label no-padding-right"> 优惠力度: </label>
+                                <label class="col-xs-3 no-padding-left" >&nbsp;&nbsp;用户打印张数大于 {{threshold}} 张，享 {{bonus * 10}} 折优惠</label>
+                            </div>
+
+                            <hr>
+
+
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button @click="handleUpdatePriceClick" class="btn btn-info" type="button">
+                                        修改价格
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

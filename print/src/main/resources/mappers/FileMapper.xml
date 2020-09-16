@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.FileMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.File">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="file_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="file_spec" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="page_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="share" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="integral" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="new_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, file_name, user_id, file_spec, page_num, share, integral, description, create_time, 
+    update_time, new_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from file
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from file
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.wrq.pojo.File">
+    insert into file (id, file_name, user_id, 
+      file_spec, page_num, share, 
+      integral, description, create_time, 
+      update_time, new_name)
+    values (#{id,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{fileSpec,jdbcType=VARCHAR}, #{pageNum,jdbcType=INTEGER}, #{share,jdbcType=INTEGER}, 
+      #{integral,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, now(),
+       now(), #{newName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.File">
+    insert into file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fileName != null">
+        file_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fileSpec != null">
+        file_spec,
+      </if>
+      <if test="pageNum != null">
+        page_num,
+      </if>
+      <if test="share != null">
+        share,
+      </if>
+      <if test="integral != null">
+        integral,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="newName != null">
+        new_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fileSpec != null">
+        #{fileSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="pageNum != null">
+        #{pageNum,jdbcType=INTEGER},
+      </if>
+      <if test="share != null">
+        #{share,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+      <if test="newName != null">
+        #{newName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.File">
+    update file
+    <set>
+      <if test="fileName != null">
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="fileSpec != null">
+        file_spec = #{fileSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="pageNum != null">
+        page_num = #{pageNum,jdbcType=INTEGER},
+      </if>
+      <if test="share != null">
+        share = #{share,jdbcType=INTEGER},
+      </if>
+      <if test="integral != null">
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+      <if test="newName != null">
+        new_name = #{newName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.File">
+    update file
+    set file_name = #{fileName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      file_spec = #{fileSpec,jdbcType=VARCHAR},
+      page_num = #{pageNum,jdbcType=INTEGER},
+      share = #{share,jdbcType=INTEGER},
+      integral = #{integral,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now(),
+      new_name = #{newName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectFileByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from file
+    where user_id = #{userId} order by create_time desc
+  </select>
+
+
+  <select id="selectFileByUserIdFileNewName" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from file
+    where new_name = #{fileName} and user_id = #{userId}
+  </select>
+
+  <select id="selectFileByFileNewName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from file
+    where new_name = #{fileName,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectNotShareFileByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from file
+    where user_id = #{userId} and share = 0 order by create_time desc
+  </select>
+
+  <update id="updateFileScoreAndStatus" parameterType="com.wrq.pojo.File">
+    update file
+    set
+    share = 1,
+    integral = #{score},
+    update_time = now()
+    where id = #{fileId,jdbcType=INTEGER}
+  </update>
+
+</mapper>

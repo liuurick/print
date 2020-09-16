@@ -1,0 +1,75 @@
+<div class="_2qkcjvzY_0 _1IL6-zM2_0">
+
+    <div class="_1oYY3l2R_0">
+
+        <div class="_2LVxZg0M_0"><a href="javascript:;" :class="{ _28Ww3Nma_0: true, '_155Rqevj_0': contentActive }"   @click="handleContentItem()">店铺介绍
+        </a><a href="javascript:;" :class="{ _28Ww3Nma_0: true, '_155Rqevj_0':priceActive }" @click="handlePriceItem(${shopInfo.shopId})">详细价格</a></div>
+        <div class="_3wR_TQCr_0">
+            <div :style="contentStyle">${shopInfo.content}</div>
+
+            <div class="shop-detail-price" :style="priceStyle">
+                <section class="_3wvO20Vz_0" class="price-section" >
+                    <div class="_3ltB8sut_0" style="height: 100%;">
+                        <div class="_3NyzKX9P_0"><a class="price-item" href=" " title="黑白单页 A4">
+                            黑白单页 一张价格</a><p>{{normalSingle | onService}}</p> <span class="_3z8_4BsD_0">     </span>
+                        </div>
+                        <div class="_3NyzKX9P_0"><a data-seo="" class="price-item" href="" title="01 | 频率视角下的机器学习">
+                            彩色单页 一张价格 </a><p> {{colorfulSingle | onService}}</p> <span class="_3z8_4BsD_0">     </span>
+                        </div>
+                        <div class="_3NyzKX9P_0"><a class="price-item" href="  " title="黑白单页 A4">
+                            黑白双页 一张价格</a><p> {{normalDouble | onService}}</p> <span class="_3z8_4BsD_0">     </span>
+                        </div>
+                        <div class="_3NyzKX9P_0"><a class="price-item" href="  " title="黑白单页 A4">
+                            彩色双页  一张价格</a><p> {{colorfulDouble | onService}}</p> <span class="_3z8_4BsD_0">     </span>
+                        </div>
+                        <!-- <div class="_3NyzKX9P_0 eBjXVH68_0"><a data-seo="" class="price-item" href="" title="黑白单页">
+                                计算学习理论</a>
+                              <span class="_1z_cjFDw_0"></span>
+                        </div> -->
+                        <div class="more-price">
+                            <div class="more-price-title">优惠力度</div>
+                            <p>{{bonusDescription}}</p>
+                        </div>
+
+                        <div class="more-price">
+                            <div class="more-price-title">其他规格</div>
+                            <p>以上陈列的价格全部为 A4 大小尺寸纸张的价格，如果需要其他纸张规格参数请阅读下方说明：</p>
+                            <p>● A0尺寸 ～ A10尺寸、4A0尺寸、0A0尺寸规格的 <span class="more-price-strong">单页非彩印</span> 的价格依次为：
+                                <span v-for="(item, index) in otherSizePriceList" :key="index">{{item | onSizeService}}、</span>。</p>
+                            <p>● A0尺寸 ～ A10尺寸、4A0尺寸、0A0尺寸的 <span class="more-price-strong">单页彩印</span>  的价格: {{colorfulVariable | onOtherSizeService}}</p>
+                            <p>● A0尺寸 ～ A10尺寸、4A0尺寸、0A0尺寸的 <span class="more-price-strong">双页非彩印</span>  的价格: {{doubleVariable | onOtherSizeService}}</p>
+                            <p>● A0尺寸 ～ A10尺寸、4A0尺寸、0A0尺寸的 <span class="more-price-strong">双页彩印</span>  的价格: {{doubleColorfulVariable | onOtherSizeService}}</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="shop-contact">
+                <ul class="shop-contact-ol">
+                    <li>店主联系方式：${shopInfo.ownerPhone}</li>
+                    <li>取货时间为：${shopInfo.workTime} - ${shopInfo.closeTime}</li>
+                    <li>对此店铺有任何建议，请邮件联系: ${shopInfo.ownerEmail}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="_2SzHdGBZ_0">
+        <h3 class="_5Pr507ne_0">其他店铺推荐</h3>
+        <section class="_3neSIM1B_0" v-for="item in otherShopList" :key="item.shopId">
+            <div class="_14fgEuQ7_0"><img :src="item.miniAddress" alt=""></div>
+            <div class="_1DOtZoG8_0" class="other-shop-name"><a href="javascript:;" title="店铺名称" class="jU9tYlcG_0">{{item.shopName}} <span class="other-shop-credit">{{item.credit}} 分</span></a>
+                <div class="_1UmnOqjj_0">
+                    <p title="店铺地址">
+                        {{item.shopAddress}}
+                    </p>
+                    <p class="_1Hq1Oraj_0">
+                        {{item.dealNum}} 人已     
+                    </p>
+                </div>
+                <div class="_3-RXWUsc_0">
+                    <span class="_1SIcQIUT_0"><a :href="'/shop/detail/' + item.shopId">进店</a></span>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

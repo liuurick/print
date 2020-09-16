@@ -1,0 +1,142 @@
+<div data-v-0ef69fa0 class="recharge-card">
+    <div data-v-0ef69fa0 class="login-rect-pc">
+        <div data-v-0ef69fa0 class="rect-list-pc">
+            <ul data-v-0ef69fa0>
+                <li data-v-0ef69fa0>
+                    <div data-v-0ef69fa0 class="label">确认账号：</div>
+                    <div data-v-0ef69fa0 class="list-content">
+                        <div data-v-0ef69fa0 class="user">
+                            <span data-v-0ef69fa0>{{username}}（{{phone}}）</span>
+                        </div>
+                    </div>
+                </li>
+                <li data-v-0ef69fa0>
+                    <div data-v-0ef69fa0 class="label">请上传文件：</div>
+                    <div data-v-0ef69fa0 class="list-content">
+                        <div class="file-upload">
+                            <form name="form1" @submit.prevent="handleUploadSubmitClick" method="post" enctype="multipart/form-data">
+                                <div class="file-upload-wrapper">
+                                    <div class="file-upload-view">
+                                        <a class="update-file-input">
+                                            <input @change="handleFileUpload($event)"  ref="fileUploadInput" type="file" name=""> <p v-html="fileText"></p>
+                                        </a>
+                                        <div class="file-upload-name" v-html="fileName"></div>
+                                    </div>
+
+                                    <div class="file-upload-sibmit-wrapper">
+                                        <input  :class="{'not-upload-file': true, 'display': fileUploadDisplay}" ref="fileUploadButtonText"  type="button" value="上传文件">
+                                        <input :class="{'file-upload-submit': true, 'display': !fileUploadDisplay}" type="submit" value="上传文件">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <li data-v-0ef69fa0>
+                    <div data-v-0ef69fa0 class="label">选择单双页：</div>
+                    <div data-v-0ef69fa0 class="list-content">
+                        <div data-v-0ef69fa0 class="platforom-radio-pc">
+                            <div data-v-0ef69fa0 @click="handleSingleOrDoubleClick('single')" :class="{'platform-item-pc': true, 'active': singleActive, 'display': !single,}">
+                                单页
+                                <span data-v-0ef69fa0>(打印一面)</span>
+                                <span data-v-0ef69fa0 class="corner"><i data-v-0ef69fa0 class="iconfont"></i></span>
+                            </div>
+                            <div class="not-service"  class="platform-item-pc" :class="{display: single}">
+                                单页
+                                <span class="not-service-tip">(无此服务)</span>
+                            </div>
+                            <div data-v-0ef69fa0  @click="handleSingleOrDoubleClick('double')"  :class="{'platform-item-pc': true, 'active': doubleActive, 'display': !double}">
+                                双页
+                                <span data-v-0ef69fa0>(正反打印)</span>
+                                <span data-v-0ef69fa0  class="corner"><i data-v-0ef69fa0 class="iconfont"></i></span>
+                            </div>
+                            <div class="not-service" class="platform-item-pc" :class="{display: double}">
+                                双页
+                                <span class="not-service-tip">(无此服务)</span>
+                            </div>
+                        </div>
+                        <p data-v-0ef69fa0 :class="{'error-text': true, 'display': singleOrDoubleErrorText}"><i data-v-0ef69fa0 class="iconfont"></i>
+                            请选择单双页参数
+                        </p>
+
+                    </div>
+                </li>
+                <li data-v-0ef69fa0>
+                    <div data-v-0ef69fa0 class="label">选择打印参数：</div>
+                    <div data-v-0ef69fa0 class="list-content">
+                        <div data-v-0ef69fa0 class="platforom-radio-pc">
+                                <div data-v-0ef69fa0 @click="handleBlackOrColorClick('black')" :class="{'platform-item-pc': true, 'active': blackActive, 'display': !black}">
+                                    黑白
+                                    <span data-v-0ef69fa0 class="corner"><i data-v-0ef69fa0 class="iconfont"></i></span>
+                                </div>
+                                <div  class="not-service" class="platform-item-pc" :class="{display: black}">
+                                    黑白
+                                    <span class="not-service-tip">(无此服务)</span>
+                                </div>
+                                <div data-v-0ef69fa0 @click="handleBlackOrColorClick('color')" :class="{'platform-item-pc': true, 'active': colorActive, 'display': !color}">
+                                    彩印
+                                    <span data-v-0ef69fa0 class="corner"><i data-v-0ef69fa0 class="iconfont"></i></span>
+                                </div>
+                                <div class="not-service" class="platform-item-pc" :class="{display: color}">
+                                    彩印
+                                    <span class="not-service-tip">(无此服务)</span>
+                                </div>
+                        </div>
+                        <p data-v-0ef69fa0 :class="{'error-text': true, 'display': colorOrBlackErrorText}"><i data-v-0ef69fa0 class="iconfont"></i>
+                            请选择打印参数
+                        </p>
+                    </div>
+                </li>
+
+                <li data-v-0ef69fa0 class="flex-start">
+                    <div data-v-0ef69fa0 class="label">请选择打印尺寸：</div>
+                    <div data-v-0ef69fa0 class="list-content">
+                        <div class="file-size-wrapper">
+                            <!--error 加在 input 后面-->
+                            <select name="file_size" data-v-0ef69fa0 class="input" v-model="pageSize" @change="handleFileSizeChange($event)">
+                                <option :value="index" v-for="(item, index) in pageSizeList" :key="index">{{item}}</option>
+
+                            </select>
+                            <span data-v-0ef69fa0 class="file-size-tag">﹀</span>
+                        </div>
+                        <!--<p data-v-0ef69fa0 class="error-text"><i data-v-0ef69fa0 class="iconfont"></i>-->
+                            <!--请输入充值码-->
+                        <!--</p>-->
+                    </div>
+                </li>
+                <li data-v-0ef69fa0 class="flex-start">
+                    <div data-v-0ef69fa0 class="label">选择打印份数:</div>
+                    <div data-v-0ef69fa0 class="list-content">
+                        <input data-v-0ef69fa0 type="number" v-model="fileQuantity" min="1" placeholder="请输入打印份数" class="input">
+                        <!--<p data-v-0ef69fa0 class="error-text"><i data-v-0ef69fa0 class="iconfont"></i>-->
+                            <!--请输入充值码-->
+                        <!--</p>-->
+                    </div>
+                </li>
+                <li data-v-0ef69fa0 class="flex-start">
+                    <div data-v-0ef69fa0 class="label">请输入备注:</div>
+                    <div data-v-0ef69fa0 class="list-content">
+												<textarea v-model="userDesc" class="description-area" rows="5" cols="55">
+												</textarea>
+                        <!--<p data-v-0ef69fa0 class="error-text"><i data-v-0ef69fa0 class="iconfont"></i>-->
+                            <!--请输入充值码-->
+                        <!--</p>-->
+                    </div>
+                </li>
+                <li data-v-0ef69fa0  style="margin-top: 10px;">
+                    <div data-v-0ef69fa0  class="label">订单价格：</div>
+                    <div data-v-0ef69fa0  class="content">
+                        <div class="file-price" v-text = "orderPrice">
+                            ￥500
+                        </div>
+                        <div data-v-0ef69fa0  class="btn-wrap">
+                            <a data-v-0ef69fa0  href="javascript:;" @click="handleOrderCreate" :class="{'not-active': createActive, 'submit-active': !createActive}">
+                                前去支付
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

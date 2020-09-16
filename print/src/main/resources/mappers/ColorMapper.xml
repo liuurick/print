@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.ColorMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.Color">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="color_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, color_type, shop_id, price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from color_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from color_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.Color">
+    insert into color_info (id, color_type, shop_id, 
+      price)
+    values (#{id,jdbcType=INTEGER}, #{colorType,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER},
+      #{price,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.Color">
+    insert into color_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="colorType != null">
+        color_type,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="colorType != null">
+        #{colorType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.Color">
+    update color_info
+    <set>
+      <if test="colorType != null">
+        color_type = #{colorType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.Color">
+    update color_info
+    set color_type = #{colorType,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectBlackOrColorByShopId" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from color_info
+    where shop_id = #{shopId} and color_type = #{colorType}
+  </select>
+
+  <update id="updatePriceByPrimaryKey" parameterType="com.wrq.pojo.Color">
+    update color_info
+    set
+    price = #{price,jdbcType=DECIMAL}
+    where  shop_id = #{shopId,jdbcType=INTEGER} and color_type = #{colorType,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

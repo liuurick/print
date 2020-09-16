@@ -1,0 +1,43 @@
+<div data-v-a5d53ce8 class="account-sidebar">
+    <input type="hidden" value="${item}" ref="itemValue">
+    <div data-v-1ce6e4a8 data-v-a5d53ce8 class="sidebar">
+
+
+        <div data-v-1ce6e4a8 class="left-nav">
+            <div data-v-1ce6e4a8 class="avatar">
+                <img data-v-1ce6e4a8 :src="headerPic" alt="avatar" class="avatar-img"> <i data-v-1ce6e4a8 class="iconfont"></i>
+                <p data-v-1ce6e4a8 :title="username">{{username}}</p>
+            </div>
+            <a data-v-1ce6e4a8 @click="handleUserClick" :class="{'ment-link': true, 'router-link-active': !userItem}">
+                <i data-v-1ce6e4a8 class="iconfont type"></i> <span data-v-1ce6e4a8>基本信息</span>
+            </a>
+            <a data-v-1ce6e4a8 @click="handleAccountClick" :class="{'ment-link': true, 'router-link-active': !accountItem}">
+                <i data-v-1ce6e4a8 class="iconfont type"></i><span data-v-1ce6e4a8>修改密码</span>
+            </a>
+            <a data-v-1ce6e4a8 @click="handleFileClick" :class="{'ment-link': true, 'router-link-active': !fileItem}">
+                <i data-v-1ce6e4a8 class="iconfont type"></i> <span data-v-1ce6e4a8>我的文件</span>
+            </a>
+            <a data-v-1ce6e4a8 @click="handleDealClick" :class="{'ment-link': true, 'router-link-active': !dealItem}">
+                <i data-v-1ce6e4a8 class="iconfont type buy"></i> <span data-v-1ce6e4a8>交易记录</span>
+            </a>
+        </div>
+
+        <div data-v-1ce6e4a8 class="upload-avatar" style="display: none;">
+            <div data-v-1ce6e4a8 class="avatar-wrap">
+                <p data-v-1ce6e4a8 class="avatar-close"><i data-v-1ce6e4a8 class="iconfont"></i></p>
+                <div data-v-1ce6e4a8 class="avatar-box">
+                    <div data-v-1ce6e4a8 class="croppa-container      "><input type="file" accept="image/*" style="height: 1px; width: 1px; overflow: hidden; margin-left: -99999px; position: absolute;">
+                        <div class="slots" style="width: 0px; height: 0px; visibility: hidden;"> </div> <canvas width="560" height="560"></canvas>
+                    </div>
+                </div>
+                <div data-v-1ce6e4a8 class="avatar-control">
+
+                    <div data-v-1ce6e4a8 class="controllers"><i data-v-1ce6e4a8 class="iconfont"></i> <i data-v-1ce6e4a8 class="iconfont"></i>
+                        <i data-v-1ce6e4a8 class="iconfont"></i> <i data-v-1ce6e4a8 class="iconfont"></i></div>
+                    <div data-v-1ce6e4a8 class="buttons"><button data-v-1ce6e4a8 type="button" class="btn-primary">上传</button></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

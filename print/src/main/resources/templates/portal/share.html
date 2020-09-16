@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>创建分享</title>
+		<link rel="stylesheet" type="text/css" href="${basePath}/css/footer.css"/>
+		<link href="${basePath}/css/common.css" rel="stylesheet" type="text/css" />
+		<link href="${basePath}/css/share.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="${basePath}/editor/lib/css/editor.min.css">
+		<link rel="stylesheet" href="${basePath}/editor/lib/plugins/mathtype/mathtype.css">
+		<script src="${basePath}/editor/lib/js/editor.js"></script>
+		<script src="${basePath}/editor/lib/plugins/mathtype/index.js"></script>
+		<#include "portal/common/js.html"/>
+	</head>
+	<body>
+		<div id="app">
+			<div data-v-80b91726>
+
+				<#include "portal/common/page/header.html"/>
+
+				<div data-v-80b91726 class="content-block" id="share">
+
+					<h4 data-v-715e15c5 @click = "handleBackIndex" class="back">《 <span style="color: #555;">返回主页</span></h4>
+
+					<div data-v-0ef69fa0 data-v-80b91726 class="recharge-cont">
+
+						<#include "portal/share/editor.html"/>
+
+						<#include "portal/share/desc.html"/>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		<script src="${basePath}/service/share/index.js"></script>
+	</body>
+</html>

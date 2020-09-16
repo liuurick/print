@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户登录</title>
+    <#include "portal/common/meta.html"/>
+    <link rel="stylesheet" type="text/css" href="${basePath}/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="${basePath}/css/common.css" />
+</head>
+<body>
+<div class="app" id="app">
+    <div data-v-6143d696="" data-v-397789a4="" class="layout container">
+        <div data-v-6143d696="" class="fix-bg"></div>
+        <div data-v-6143d696="" class="layout-content"><img data-v-6143d696="" src="${basePath}/img/login_img.png" class="layout-label">
+            <div data-v-cf2320aa="" data-v-397789a4="" class="card" data-v-6143d696="">
+                <div data-v-397789a4="" data-v-cf2320aa=""><a href="/index"><img data-v-397789a4="" data-v-cf2320aa="" src="${basePath}/img/logo.png" alt="logo" class="logo"></a>
+                    <form action="/user/login.do" method="post">
+                        <span class="error-tips">${msg}</span>
+                        <input type="hidden" value="${url}" ref="urlRef">
+                        <div data-v-397789a4="" data-textarea="0" class="ui-form-item ui-big-input ui-gray-input" validate="true" data-v-cf2320aa="">
+                            <input  v-model="username" name="username" type="text" placeholder="请输入用户名" maxlength="64" class="ui-form-text">
+                            <!--<span class="ui-input-error" :style="userErrorTips">用户名格式错误</span>-->
+                        </div>
+                        <div data-v-771508bb="" data-v-397789a4="" data-textarea="0" class="ui-form-item ui-big-input ui-gray-input" validate="true" data-v-cf2320aa="">
+                            <input v-model="password"  name="password" type="password" placeholder="请输入密码" maxlength="16" class="ui-form-text">
+                            <!--<span class="ui-input-error" :style="psdErrorTips">请输入 6-16 位的密码</span>-->
+                            <!--<i data-v-771508bb="" class="iconfont icon-right show"></i>-->
+                        </div>
+                        <div data-v-397789a4="" data-v-cf2320aa="" class="forget">
+                            <a data-v-397789a4="" href="/biz/forgot" class="" data-v-cf2320aa="">忘记密码？</a>
+                        </div>
+                        <div data-v-397789a4="" class="ui-btn ui-big-btn orange-btn" data-v-cf2320aa="" @click="handleClick">
+                            登陆
+                        </div>
+                        <p data-v-397789a4="" data-v-cf2320aa="" class="have"> 若无帐号？点此 <a data-v-397789a4="" href="/biz/signup" class="" data-v-cf2320aa="">注册</a></p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <p data-v-b9241014="" data-v-6143d696="" class="footer">© 2019 WangR Technology Ltd. All rights reserved</p>
+    </div>
+</div>
+
+<!-- 引入脚本 -->
+
+<#include "portal/common/js.html"/>
+<script src="${basePath}/service/login/index.js"></script>
+
+</body>
+</html>

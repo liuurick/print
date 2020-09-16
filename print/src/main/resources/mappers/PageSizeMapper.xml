@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wrq.dao.PageSizeMapper">
+  <resultMap id="BaseResultMap" type="com.wrq.pojo.PageSize">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="size_type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="shop_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="variable" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, size_type, shop_id, variable
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from page_size_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from page_size_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wrq.pojo.PageSize">
+    insert into page_size_info (id, size_type, shop_id, 
+      variable)
+    values (#{id,jdbcType=INTEGER}, #{sizeType,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, 
+      #{variable,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wrq.pojo.PageSize">
+    insert into page_size_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sizeType != null">
+        size_type,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="variable != null">
+        variable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sizeType != null">
+        #{sizeType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="variable != null">
+        #{variable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wrq.pojo.PageSize">
+    update page_size_info
+    <set>
+      <if test="sizeType != null">
+        size_type = #{sizeType,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="variable != null">
+        variable = #{variable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.wrq.pojo.PageSize">
+    update page_size_info
+    set size_type = #{sizeType,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      variable = #{variable,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <update id="updateByPrice" parameterType="com.wrq.pojo.PageSize">
+    update page_size_info
+    set
+    variable = #{price,jdbcType=VARCHAR}
+    where shop_id = #{shopId,jdbcType=INTEGER} and size_type = #{sizeType,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="getPageSizeByShopIdAndSize"  parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from page_size_info
+    where shop_id = #{shopId,jdbcType=INTEGER} and size_type = #{pageSize,jdbcType=INTEGER}
+  </select>
+
+  <select id="getPageSizeByShopId"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from page_size_info
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+
+</mapper>

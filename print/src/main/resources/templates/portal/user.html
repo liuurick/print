@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>用户</title>
+    <#include "portal/common/meta.html"/>
+    <#include "portal/common/star.html"/>
+    <link href="${basePath}/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="${basePath}/css/user.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="${basePath}/css/footer.css"/>
+    <#include "portal/common/js.html"/>
+</head>
+<body>
+
+    <div data-v-a5d53ce8 class="account-wrap">
+
+        <#include "portal/common/page/header.html"/>
+
+
+        <div data-v-a5d53ce8 class="account">
+            <div data-v-a5d53ce8 class="account-cover"></div>
+            <div data-v-a5d53ce8 class="container" id="user" v-cloak>
+
+                    <#include "portal/user/side.html"/>
+
+                    <#include "portal/user/deal.html"/>
+
+                    <#include "portal/user/account.html"/>
+
+                    <#include "portal/user/file.html"/>
+
+                    <#include "portal/user/user.html"/>
+
+            </div>
+        </div>
+    </div>
+
+    <p data-v-2186ca3b class="footer">© 2019 毕业设计. All rights reserved</p>
+
+    <script src="${basePath}/service/user/index.js"></script>
+</body>
+</html>
